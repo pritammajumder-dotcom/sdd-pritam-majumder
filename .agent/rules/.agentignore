@@ -1,0 +1,44 @@
+# ==========================================
+# INT Node.js AI Agent Ignore File
+# ==========================================
+# 1. Heavy Dependencies (Massive token sinks)
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# 2. Build Artifacts & Caches (Compiled code is useless for AI context)
+dist/
+build/
+out/
+.next/
+.nuxt/
+coverage/
+.cache/
+
+# 3. Environment Variables & Secrets (Security boundaries)
+.env
+.env.*
+*.pem
+*.key
+credentials.json
+secrets/
+
+# 4. Logs & Local Databases (Noise that confuses the AI)
+logs/
+*.log
+npm-debug.log*
+*.sqlite
+*.db
+
+# 5. Media & Static Assets (Unreadable binary data)
+public/assets/
+images/
+*.svg
+*.png
+*.jpg
+*.mp4
+*.ico
+
+# 6. AI Audit Trail (Prevents recursive reading)
+.ai-context/prompt_history.md

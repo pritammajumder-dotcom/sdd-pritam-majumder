@@ -1,0 +1,291 @@
+---
+name: int-production-incident
+description: Record, classify, triage, and manage production incidents from client, support, monitoring, or internal sources, then route the incident to the correct SDD path without automatically creating a Hotfix.
+---
+
+# INT Production Incident Management Workflow
+
+## 1. Purpose
+
+This workflow is the entry point for production issues reported by a client, support team, monitoring system, or internal team.
+
+It creates a structured Incident record, classifies the incident, determines the appropriate SDD route, and maintains traceability.
+
+It MUST NOT automatically create a Hotfix for every production issue.
+
+The INT SDD Blueprint V1.0 is the sole source of truth for incident classification, production-support lifecycle, artefacts, gates, and routing.
+
+If this workflow conflicts with the Blueprint, the Blueprint takes precedence.
+
+---
+
+# 2. Incident Identifier
+
+Generate a unique identifier:
+
+```text
+INC-YYYY-NNN
+```
+
+Before generating an ID, inspect `.ai-context/incidents/` to avoid duplicates.
+
+Do not ask the user to invent the Incident ID.
+
+---
+
+# 3. Information Collection
+
+Ask for or extract:
+
+1. Source
+2. Incident title
+3. Incident description
+4. Environment
+5. Affected application/module
+6. Expected behaviour
+7. Actual behaviour
+8. Business impact
+9. Severity
+10. Incident type
+11. Evidence/logs, when available
+
+## Source
+
+Examples:
+
+- Client Email
+- Client Portal
+- Internal Support
+- Monitoring / Alert
+- Internal Team
+- Other
+
+## Incident Type
+
+Use one of:
+
+- Production Defect
+- Production Outage
+- Performance Issue
+- Security Incident
+- Data Issue
+- Integration Issue
+- Infrastructure Issue
+- Configuration Issue
+- Other
+
+Do not invent missing incident information. Use `Unknown` or `Pending Investigation` where appropriate.
+
+---
+
+# 4. Create Incident Record
+
+Create:
+
+```text
+.ai-context/incidents/INC-YYYY-NNN.md
+```
+
+Use:
+
+```markdown
+# Incident: <Title>
+
+## Incident ID
+INC-YYYY-NNN
+
+## Source
+<Client Email / Client Portal / ...>
+
+## Reported Date
+<date>
+
+## Environment
+Production
+
+## Severity
+<Critical / High / Medium / Low>
+
+## Type
+<Incident Type>
+
+## Affected Application / Module
+<module>
+
+## Description
+<description>
+
+## Expected Behaviour
+<expected behaviour>
+
+## Actual Behaviour
+<actual behaviour>
+
+## Business Impact
+<impact>
+
+## Evidence
+<logs / screenshots / references / Pending>
+
+## Status
+Open
+
+## Classification
+Pending Triage
+
+## Hotfix
+Not Yet Determined
+
+## Root Cause
+Pending Investigation
+
+## Resolution
+Pending
+
+## Release
+Pending
+```
+
+Do not create implementation code.
+
+---
+
+# 5. Triage
+
+Classify the Incident as exactly one of:
+
+```text
+Spec Gap
+Implementation Defect
+Genuine New Requirement
+```
+
+### Spec Gap
+
+```text
+Spec Gap
+ ↓
+Hotfix Spec / Bug-Fix Spec
+ ↓
+Original Spec updated where required
+```
+
+### Implementation Defect
+
+```text
+Implementation Defect
+ ↓
+Lightweight Bug-Fix Spec
+ ↓
+Original Spec remains unchanged unless learning requires update
+```
+
+### Genuine New Requirement
+
+```text
+Genuine New Requirement
+ ↓
+BRD entry
+ ↓
+BRD Change Log
+ ↓
+Gate 1
+ ↓
+New / Updated Spec
+ ↓
+Normal SDD lifecycle
+```
+
+Do not silently convert a new requirement into a Hotfix.
+
+---
+
+# 6. Hotfix Decision
+
+Only route to Hotfix when the Incident requires an urgent production correction.
+
+If Hotfix is required:
+
+```text
+Incident
+ ↓
+HOTFIX-<incident-slug>
+ ↓
+hotfix-management
+```
+
+Update the Incident with the Hotfix ID and classification.
+
+If Hotfix is not required, route to the appropriate normal SDD or operational process.
+
+---
+
+# 7. Traceability
+
+Maintain links between the Incident and all related artefacts:
+
+```text
+Incident
+ ↓
+Hotfix
+ ↓
+Hotfix Spec
+ ↓
+Original Spec
+ ↓
+Plan
+ ↓
+Tasks
+ ↓
+Tests
+ ↓
+Gate 2
+ ↓
+Release
+```
+
+The Hotfix MUST reference the Incident ID.
+
+---
+
+# 8. Status Management
+
+Update `.ai-context/status.md` on the same day when the Incident state materially changes.
+
+Use only lifecycle states supported by the governing Blueprint/project standard.
+
+---
+
+# 9. Incident Closure
+
+An Incident may be marked Closed only after:
+
+- The production issue is resolved or formally accepted as resolved.
+- Related Hotfix release is completed, where applicable.
+- Root cause is documented or explicitly recorded as unknown.
+- Resolution is recorded.
+- Related Hotfix ID is recorded where applicable.
+- Release version is recorded where applicable.
+- `status.md` is updated.
+
+---
+
+# 10. Final Validation
+
+Verify:
+
+1. Incident ID is unique.
+2. Source is recorded.
+3. Incident details are recorded.
+4. Incident type is recorded.
+5. Severity is recorded.
+6. Environment is recorded.
+7. Business impact is recorded.
+8. Classification is recorded.
+9. Correct SDD route is selected.
+10. Hotfix is created only when justified.
+11. Incident and Hotfix are cross-linked.
+12. No business implementation was generated by this workflow.
+13. `status.md` reflects the current state.
+
+If validation fails, do not report the Incident workflow as complete.
