@@ -20,4 +20,4 @@ The system follows a **Modular Monolith (Microservice Ready)** architecture.
 ## Getting Started
 - All feature specifications reside in `.ai-context/specs/`.
 - The strict rules governing coding standards, testing, and security are found in `.ai-context/constitution.md`.
-- Ensure all work adheres to the INT Specification-Driven Delivery (SDD) v1.0 standard.
+- Ensure all work adheres to the **INT SDD BluePrint - V1.0** (located in `docs/`) for foundational guidelines.
