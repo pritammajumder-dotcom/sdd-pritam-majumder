@@ -4,7 +4,7 @@
 internal-transfer-journey
 
 ## Status
-Draft
+In Peer Review
 
 ## Roles & Assignments
 - **Developer:** Pritam Majumder
