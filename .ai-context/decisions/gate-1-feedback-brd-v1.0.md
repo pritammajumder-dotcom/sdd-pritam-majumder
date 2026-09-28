@@ -1,0 +1,51 @@
+# Gate 1 Review Feedback: BRD v1.0 (BRD-001, Employee Internal Transfer Digital Journey)
+
+## Review Metadata
+- **Artefact reviewed:** `.ai-context/BRD.md` v1.0 (now archived at `.ai-context/archive/brd/BRD-v1.0.md`)
+- **Requirement:** BRD-001
+- **Reviewer:** Shamik Bhattacharya, Project Manager / Gate 1 Reviewer (shamik.bhattacharya@intglobal.com)
+- **Review date:** 2026-09-28
+- **Review status:** Changes Requested
+- **Resulting revision:** BRD v1.1 (`.ai-context/BRD.md`), Pending Gate 1 re-review
+- **Resolution map:** BRD v1.1, Appendix A
+
+## Feedback as logged by the reviewer
+
+| # | Priority | Feedback / clarification required | Resolved in (BRD v1.1) |
+|---|---|---|---|
+| G1-01 | Critical | Clarify when the transfer actually becomes effective. The employee picks an effective date at least 14 days ahead, but v1.0 updates organisational information immediately after HR approval. Confirm whether the change happens on HR approval or on the effective date. | D16, D19 |
+| G1-02 | Critical | Define the withdrawal cutoff. Withdrawal after HR approval or after fulfilment has started may create inconsistent data. Define the exact stage until which withdrawal is allowed. | D09, D10 |
+| G1-03 | Critical | Clarify the HR workflow: does the system auto-approve or reject on the three rules, or does HR review and decide manually? Define the exact HR action. | D21 |
+| G1-04 | Critical | Define what happens when Payroll, IT or Facilities fails: automatic retry, manual retry, mark failed, or escalate. | D25, D26 |
+| G1-05 | Critical | Define the final status if one fulfilment permanently fails even after retries. | D27, D10, D26 |
+| G1-06 | Critical | Define partial completion behaviour (e.g., Payroll and IT completed, Facilities pending or failed). The employee must see it clearly, and the overall status must not wrongly show Completed or Failed. | D28 |
+| G1-07 | Critical | Add duplicate-processing protection: a unique reference ID per fulfilment request and idempotent processing. | D24 |
+| G1-08 | Critical | Define a full access matrix (view, create, approve, reject, update, withdraw) for all six roles, enforced by the API and backend, not only the UI. | D37, D23 |
+| G1-09 | Critical | Define the HR SLA, reminder and escalation process. | D29 |
+| G1-10 | Critical | Define who approves if the employee's manager changes while the request is pending. | D12, D14 |
+| G1-11 | Critical | Define what happens if fulfilment is not completed by the effective date. | D17, D18 |
+| G1-12 | High | Define all allowed status transitions. The backend must prevent invalid ones. | D32–D36 |
+| G1-13 | High | Clarify whether HR can enter an additional rejection comment or reason. | D22 |
+| G1-14 | High | Define what happens if the employee's profile changes while pending: original or latest data? | D08, D21, D39 |
+| G1-15 | High | Clarify master-data relationships: is every department, location and role combination allowed? | D03 |
+| G1-16 | High | Define what happens if master data becomes inactive after submission. | D40 |
+| G1-17 | High | Enforce the single-active-request rule at backend and database level (two tabs, concurrent API calls). | D07 |
+| G1-18 | High | Add an audit trail requirement (user, role, timestamp, previous and new status). | D44 |
+| G1-19 | High | Clarify what "push notification" means with no notification provider, and what happens if delivery fails. | D45–D47 |
+| G1-20 | High | Define concurrent-action handling: only one valid transition allowed. | D43 |
+| G1-21 | High | Define adapter error scenarios: success, timeout, 4xx, 5xx, invalid response, duplicate request. | D25, D49 |
+| G1-22 | Medium | Define the system of record for employee organisational information. | D19 |
+| G1-23 | Medium | Define behaviour when the employee becomes inactive while a request is active. | D41 |
+| G1-24 | Medium | Define behaviour when a manager or functional user becomes inactive, so requests do not get stuck. | D42, D29 |
+| G1-25 | Medium | Add basic, testable performance expectations. | D51 |
+| G1-26 | Medium | Define minimum test data for development and UAT. | D52 |
+| G1-27 | Medium | Define the business-day calculation with examples (Friday submission, weekend crossing, SLA expiry). | D31 |
+| G1-28 | Medium | Clarify whether a request identical to the current assignment is allowed. | D04 |
+
+## Mandatory acceptance scenarios requested
+
+- **Positive:** valid submission; manager approval; HR approval; independent fulfilment; individual fulfilment status visible; all complete leads to Completed; manager reject; HR reject; withdrawal while allowed; SLA exceeded. BRD v1.1: AS-P01 to AS-P10.
+- **Negative:** effective date under 14 days; existing active request; duplicate submission; access to another employee's request; self-approval; manager outside reporting line; non-HR user doing an HR action; Payroll user updating the IT item; adapter timeout; adapter error; invalid response; duplicate fulfilment request; one succeeds while another fails; invalid transition; action after withdrawn, completed or rejected. BRD v1.1: AS-N01 to AS-N15, plus AS-N16 to AS-N22 added for clauses introduced in v1.1.
+
+## Key point flagged by the reviewer
+The relationship between "Effective Date" and "HR Approval" is the most important clarification. In v1.1, HR approval authorises the transfer and starts fulfilment. The organisational change is applied only on the effective date, and only once all three fulfilment items are complete (BRD-001.D16, D17).
