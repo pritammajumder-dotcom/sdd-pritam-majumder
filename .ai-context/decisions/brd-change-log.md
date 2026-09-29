@@ -5,7 +5,8 @@ Traceability and history only. The authoritative requirement baseline is always 
 | Version | Date | Status | Summary | Location |
 |---|---|---|---|---|
 | 1.0 | Not recorded (on or before 2026-09-25) | Superseded (Gate 1: Changes Requested, 2026-09-28) | Initial BRD-001 baseline | `archive/brd/BRD-v1.0.md` |
-| 1.1 | 2026-09-28 | Pending Gate 1 | Revision against Gate 1 feedback G1-01 to G1-28 | `BRD.md` |
+| 1.1 | 2026-09-28 | Superseded (Gate 1: Changes Requested, 2026-09-29) | Revision against Gate 1 feedback G1-01 to G1-28 | `archive/brd/BRD-v1.1.md` |
+| 1.2 | 2026-09-29 | Pending Gate 1 | Revision against Gate 1 re-review feedback G1R-01 to G1R-26 | `BRD.md` |
 
 ---
 
@@ -26,7 +27,7 @@ Changes Requested. Shamik Bhattacharya, 2026-09-28. See `decisions/gate-1-feedba
 
 ### Version 1.1
 
-Status: Pending Gate 1
+Status: Superseded by v1.2 (2026-09-29)
 
 Change Date:
 2026-09-28
@@ -122,6 +123,141 @@ Architecture Impact:
 - TL (Subhajit Mukherjee) technical concurrence is needed at Gate 1, because the security posture (access matrix) and architectural constraints (jobs, retries) are affected.
 
 Gate 1 Status:
+Changes Requested
+
+Approval Date:
+Not approved (re-review 2026-09-29)
+
+Approved By:
+Not approved
+
+Approval Notes:
+Shamik Bhattacharya (Gate 1 Reviewer), 2026-09-29: Changes Requested, "almost development-ready". The feedback had 20 numbered P0/P1 items, 4 development-readiness items, 1 terminology item, and additional acceptance scenarios (`decisions/gate-1-feedback-brd-v1.1.md`). The reviewer confirmed the listed assumptions as written during the v1.2 revision. All items are addressed in v1.2.
+
+---
+
+### Version 1.2
+
+Status: Pending Gate 1
+
+Change Date:
+2026-09-29
+
+Change Summary:
+Revision of BRD-001 in response to the Gate 1 re-review of v1.1 by Shamik Bhattacharya (PM, Gate 1 Reviewer). The feedback is recorded as G1R-01 to G1R-26 in `decisions/gate-1-feedback-brd-v1.1.md`. There is no new client source document in `docs/`, so the review record drives this revision. Clause IDs D01 to D52 keep their meaning, and D53 to D71 are new. All v1.1 **(Assumption)** clauses were confirmed as written by the reviewer on 2026-09-29, and v1.2 has no open assumptions. The reviewer also made three decisions during the revision: cancellation becomes terminal only after unwind (`CancellationPending`); a new submission is allowed while an earlier cancellation unwinds, but HR approval is blocked; and the new manager comes from master data, with HR selecting one where there is a gap. v1.1 is archived unchanged at `archive/brd/BRD-v1.1.md`.
+
+Headline changes:
+- HR or System cancellation after HR approval is no longer immediately terminal. The new non-terminal status `CancellationPending` lasts until every item is `Cancelled`, `Reversed` or `ReversalWaived` (D10, D55).
+- The fulfilment reference ID identifies an item. Each Dispatch, Amend, Cancel or Reverse operation has its own idempotency key (D24, D53).
+
+Added Requirements:
+None at BRD-ID level (BRD-001 stays the only requirement). New clauses within BRD-001:
+- D53 adapter operations and per-operation idempotency keys
+- D54 Cancel operation for dispatched instructions
+- D55 unwinding on cancellation and resolving reversal failures (owner, retry, manual reversal, HR Lead waiver, escalation, final resolution)
+- D56 late, duplicate and contradictory callbacks
+- D57 callback authentication and validation
+- D58 manual completion controls
+- D59 approver assignment when there is no active manager
+- D60 effective-date cutoff
+- D61 atomic application of the organisational change
+- D62 effective-date run failure and recovery
+- D63 notification idempotency
+- D64 testable definition of tamper-evident
+- D65 server-side protection of sensitive data
+- D66 reschedule limits
+- D67 new reporting manager
+- D68 new request while an earlier cancellation is unwinding
+- D69 minimum adapter contract
+- D70 separation of request status, item status and flags
+- D71 development entry conditions
+- Request status `CancellationPending`; item status `ReversalWaived`; transitions T16 to T18
+- Flags *AwaitingApproverAssignment*, *BlockedByPriorCancellation*, *NewManagerRequired*, *ApplicationOverdue*, *AdapterDiscrepancy*
+- Acceptance scenarios AS-P23 to AS-P33 and AS-N23 to AS-N38 (AS-P11 to AS-P22 intentionally unused, so the reviewer's IDs are kept); business-day example E8; test employees TE-13 and TE-14
+- Decision Register (replaces "Open at BRD stage"); Appendix B (re-review traceability)
+
+Modified Requirements:
+- D03: combinations may name a designated reporting manager. The no-headcount assumption is confirmed.
+- D07: the single-active rule now applies to the "active" set, which excludes `CancellationPending`. The DB mechanism is deferred to `plan.md` (D71).
+- D10, D11: cancellation after HR approval goes to `CancellationPending`, not directly to `Cancelled`.
+- D12, D14: approver can be HR-assigned. A replaced manager who had not acted loses all access. The approval-stands assumption is confirmed.
+- D16, D17, D18: new-manager application, cutoff (D60), atomicity (D61) and reschedule limits (D66) added. Assumptions confirmed.
+- D21: HR Approve additionally requires an approved new manager and no earlier request of the employee in `CancellationPending`.
+- D22: the employee sees failed rule names only, never disciplinary details. The non-rule rejection assumption is confirmed. Enforcement is at API level (D65).
+- D23: extended to fulfilment, unwind, assignment and manual-completion actions, and to HR self-assignment.
+- D24: the reference ID is no longer the idempotency key. *(Changed from v1.1.)*
+- D25: retries reuse the operation key and an identical payload. An exhausted-retries outcome is recorded as unknown.
+- D26: manual retry key rule; manual retries do not restart the SLA. Reversal text moved to D55.
+- D27: Resume uses D53. Cancel now goes to `CancellationPending`.
+- D29: new SLA rows for approver assignment, unwind, `ReversalFailed` and overdue application. v1.1 values confirmed.
+- D30: approver assignment and the D68 block clearance restart SLAs. Manual retries do not.
+- D31: Asia/Kolkata confirmed. UTC storage and Asia/Kolkata display. Example E8.
+- D32 to D36: `CancellationPending`, T9/T10/T13 conditions, T14 target changed, T15 narrowed, T16 to T18 added. D34 exception removed. D35 splits non-terminal and active sets. D36 item-status table with resolution columns and completion source.
+- D37: manager view rewritten (current approver; read-only for own recorded decision; none if replaced before acting). New rows for unwind, waiver, approver assignment, new-manager selection, Apply now, audit verification.
+- D39, D40: flag names aligned to D70. The D40 committed-position assumption is confirmed.
+- D41, D42: follow D11 and D59.
+- D43: System actions and completion-vs-effective-date-run races included.
+- D44: operations, keys, callbacks, application attempts and verification runs audited. Tamper-evidence defined in D64.
+- D46, D47, D48: new notification events and employee-view items. The notification retry uses D63.
+- D49: mock adapters also simulate Amend, Cancel and Reverse outcomes and late, duplicate and unauthenticated callbacks.
+- D50: adapters authenticate separately (D57).
+- D51: load baseline confirmed. Targets added for unwind start and callback processing.
+- D52: extra master data, users and TE-13, TE-14.
+- AS-P03, P06, P08, P10, AS-N06, N07, N09, N12, N14, N20, N21: expected results and clauses aligned to v1.2.
+
+Removed Requirements:
+- None. The v1.1 statement "reference ID is the idempotency key" (D24) and the D34 post-terminal reversal exception are superseded. They are kept for history in `archive/brd/BRD-v1.1.md`.
+
+Unchanged Requirements:
+- BRD-001 objective, sponsor, and priority
+- D01, D02, D04, D05, D06, D08, D09, D13, D15, D19, D20 (a clarifying note on `Cancelled` and R3 was added), D28 (text added for `CancellationPending` only), D38, D45
+
+Affected Business Domains:
+- Transfers (request lifecycle, cancellation), Fulfilment orchestration and adapters, Master data (designated manager), Employee organisation (atomic application), Scheduling (effective date, recovery), Notifications, Access control and data protection, Audit
+
+Affected Modules:
+- transfers, eligibility, fulfilment orchestration and adapters (payroll, it, facilities), adapter callback interface, master-data, employees/org, notifications, rbac/auth, audit, scheduler
+
+API Impact:
+- New or changed actions: HR cancel (to `CancellationPending`), unwind retry, mark reversed manually, HR Lead waive, assign approver, select new manager, HR Lead Apply now, HR Lead cancel with no eligible approver, audit verification.
+- Adapter contract: operation type and per-operation idempotency key on every call. New Cancel and Reverse operations. An authenticated callback endpoint.
+- Server-side field filtering by role on all endpoints, exports and real-time events.
+
+Database Impact:
+- New status `CancellationPending`, item status `ReversalWaived`, completion source, and new flags. Status, item status and flags stored separately (D70).
+- Operation table (type, idempotency key, sequence, payload, outcome, including unknown).
+- Designated manager on combinations. Approved new manager on requests. Reschedule history with a count.
+- Active-request uniqueness over the active set (not a plain unique constraint).
+- Audit hash chain and an insert-only DB grant for the application account.
+- Notification de-duplication key.
+
+Frontend Impact:
+- `CancellationPending` view with "n of 3 resolved". Messages for waiting for approver assignment, blocked by an earlier cancellation, and new manager.
+- HR screens: approver assignment, new-manager selection, reschedule reason and limit, block reason.
+- Functional queue unwind actions. HR Lead waiver and Apply now.
+- Manual-completion state rules and immutable evidence notes.
+
+Backend Impact:
+- State machine T1 to T18. Operation and idempotency model. Cancel/Reverse orchestration.
+- Callback authentication and matching rules.
+- Serialised completion vs effective-date run. Atomic application. Recovery check every 15 minutes and on startup.
+- Notification de-duplication. Audit hash chain and verification job. Role-based response filtering.
+
+Test Impact:
+- `test_cases/internal-transfer-journey.test_cases.md` does not reflect v1.2 and must be revised.
+- Add AS-P23 to AS-P33 and AS-N23 to AS-N38.
+- Add adapter operation, cancel and callback matrices, the cutoff race tests, tamper detection, per-role API field-absence tests, E8, TE-13 and TE-14.
+
+Existing Implementation Impact:
+- None. No application implementation exists for this BRD yet.
+- The spec `specs/internal-transfer-journey.spec.md` does not reflect v1.2 and must be revised before development (D71). It was not changed in this revision, per the reviewer's instruction to revise the BRD only.
+
+Architecture Impact:
+- Scheduler with recovery and per-request serialisation. Authenticated inbound callback interface. Hash-chained audit with DB-level grants. All must fit the approved stack (NestJS, PostgreSQL + Prisma, Redis) or need an ADR.
+- D71 makes the plan items (DB uniqueness mechanism, adapter contract, callback auth, audit chain, scheduler, timezone, field filtering) entry conditions for development.
+- TL (Subhajit Mukherjee) technical concurrence is needed at Gate 1.
+
+Gate 1 Status:
 Pending
 
 Approval Date:
@@ -131,4 +267,4 @@ Approved By:
 Pending
 
 Approval Notes:
-Pending. The reviewer should confirm or overturn each **(Assumption)** clause listed under "Open at BRD stage" in BRD v1.1.
+Pending. v1.2 has no open assumptions. The reviewer should approve or change the new v1.2 values listed in the BRD Decision Register (for example the reschedule limit of 3, the approver-assignment SLA of 1 business day, and the 01:00 overdue point).

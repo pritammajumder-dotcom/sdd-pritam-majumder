@@ -4,7 +4,7 @@
 > |---|---|
 > | Document | Business Requirements Document — Employee Internal Transfer Digital Journey |
 > | Version | **v1.0** |
-> | Status | Superseded by **v1.1** (`.ai-context/BRD.md`) on 2026-09-28 |
+> | Status | Superseded by **v1.1** on 2026-09-28 (v1.1 itself superseded by v1.2 on 2026-09-29; v1.1 archived at `archive/brd/BRD-v1.1.md`, current baseline `.ai-context/BRD.md`) |
 > | Reason | Gate 1 review by Shamik Bhattacharya (Project Manager, Gate 1 Reviewer) on 2026-09-28: **Changes Requested**, 28 feedback items plus mandatory acceptance scenarios. See `.ai-context/decisions/gate-1-feedback-brd-v1.0.md` |
 > | Change record | `.ai-context/decisions/brd-change-log.md` → Version 1.1 |
 >

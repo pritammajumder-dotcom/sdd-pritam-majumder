@@ -6,7 +6,7 @@
 - **Reviewer:** Shamik Bhattacharya, Project Manager / Gate 1 Reviewer (shamik.bhattacharya@intglobal.com)
 - **Review date:** 2026-09-28
 - **Review status:** Changes Requested
-- **Resulting revision:** BRD v1.1 (`.ai-context/BRD.md`), Pending Gate 1 re-review
+- **Resulting revision:** BRD v1.1 (now archived at `.ai-context/archive/brd/BRD-v1.1.md`). Re-review on 2026-09-29: Changes Requested (`gate-1-feedback-brd-v1.1.md`). Current baseline: v1.2 (`.ai-context/BRD.md`)
 - **Resolution map:** BRD v1.1, Appendix A
 
 ## Feedback as logged by the reviewer
