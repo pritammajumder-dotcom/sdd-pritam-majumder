@@ -16,7 +16,7 @@ Standard in force: **INT Engineering Guidelines — Specification-Driven Deliver
 |---|---|---|---|
 | Technical Lead / Architect | Subhajit Mukherjee | subhajit.mukherjee@intglobal.com | Owns this constitution; default Gate 2 code reviewer; technical concurrence at Gate 1 |
 | Senior Software Engineer | Pritam Majumder | pritam.majumder@intglobal.com | Default Spec Author for feature and retro-specs |
-| Project Manager | Shamik Bhattacharya | shamik.bhattacharya@intglobal.com | Owns BRD entries and product-side sign-off; default Gate 1 reviewer |
+| Project Manager | Shamik Bhattacharya | shamik.bhattacharya@intglobal.com | Owns BRD entries and product-side sign-off; default Gate 0 and Gate 1 reviewer |
 
 ### Core Governance Rules:
 - **Author ≠ Reviewer**: Gate 1 reviewer is never the spec author (Default: SSE authors → PM reviews).
