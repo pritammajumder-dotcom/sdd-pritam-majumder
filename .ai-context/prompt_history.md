@@ -13,3 +13,7 @@ Project setup initiated with Mobile/Backend architecture.
 ### [2026-09-29 19:29]
 **User Request:** Shamik Bhattacharya (Gate 1 Reviewer) gave Gate 1 re-review feedback on BRD v1.1 (25 items plus terminology and extra acceptance scenarios) and asked for the BRD only to be revised and released, keeping the old version for reference.
 **Agent Action:** Asked the reviewer to decide four open points: all v1.1 assumptions confirmed; cancellation terminal only after unwind; new submission allowed but HR approval blocked during an earlier unwind; new manager from master data with HR filling gaps. Archived v1.1 unchanged at `.ai-context/archive/brd/BRD-v1.1.md`. Rewrote `.ai-context/BRD.md` as v1.2 (Pending Gate 1): kept D01 to D52, added D53 to D71, `CancellationPending`, T16 to T18, AS-P23 to P33, AS-N23 to N38, Decision Register (no open assumptions), Appendix B. Recorded the feedback in `.ai-context/decisions/gate-1-feedback-brd-v1.1.md`. Updated both change logs and the v1.0 archive and feedback pointers. Spec, test cases and code unchanged.
+
+### [2026-09-30 10:48]
+**User Request:** Resend spec for review after BRD v1.2 updates.
+**Agent Action:** Completely rewrote `internal-transfer-journey.spec.md` to map to BRD v1.2. Updated API contracts and mapped new Acceptance Criteria (AS-P23 to AS-N38) into Unit Tests. Formatted `status.md` and returned the Spec to `In Peer Review` state. Halted execution for PM/TL Gate 1 Review as per the INT SDD Lifecycle.
