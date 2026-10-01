@@ -1,7 +1,7 @@
 # Project Assumptions & Uncertainties
 
 **Linked BRD:** `.ai-context/BRD.md` (v1.2)
-**Status:** All assumptions closed.
+**Status:** All assumptions closed. BRD v1.2 approved at Gate 0 on 2026-10-01.
 
 ## Open Assumptions
 *(None)*

@@ -6,7 +6,7 @@ Traceability and history only. The authoritative requirement baseline is always 
 |---|---|---|---|---|
 | 1.0 | Not recorded (on or before 2026-09-25) | Superseded (Gate 0: Changes Requested, 2026-09-28) | Initial BRD-001 baseline | `archive/brd/BRD-v1.0.md` |
 | 1.1 | 2026-09-28 | Superseded (Gate 0: Changes Requested, 2026-09-29) | Revision against Gate 0 feedback G0-01 to G0-28 | `archive/brd/BRD-v1.1.md` |
-| 1.2 | 2026-09-29 | Pending Gate 0 | Revision against Gate 0 re-review feedback G0R-01 to G0R-26 | `BRD.md` |
+| 1.2 | 2026-09-29 | Approved (Gate 0, 2026-10-01), subject to D71 | Revision against Gate 0 re-review feedback G0R-01 to G0R-26 | `BRD.md` |
 
 ---
 
@@ -138,7 +138,7 @@ Shamik Bhattacharya (Gate 0 Reviewer), 2026-09-29: Changes Requested, "almost de
 
 ### Version 1.2
 
-Status: Pending Gate 0
+Status: Approved (Gate 0, 2026-10-01)
 
 Change Date:
 2026-09-29
@@ -258,13 +258,13 @@ Architecture Impact:
 - TL (Subhajit Mukherjee) technical concurrence is needed at Gate 1.
 
 Gate 0 Status:
-Pending
+Approved
 
 Approval Date:
-Pending
+2026-10-01
 
 Approved By:
-Pending
+Shamik Bhattacharya (PM, Gate 0 Reviewer), shamik.bhattacharya@intglobal.com
 
 Approval Notes:
-Pending. v1.2 has no open assumptions. The reviewer should approve or change the new v1.2 values listed in the BRD Decision Register (for example the reschedule limit of 3, the approver-assignment SLA of 1 business day, and the 01:00 overdue point).
+BRD v1.2 is functionally development-ready, with no remaining business-requirement blocker. The new v1.2 values in the Decision Register are approved as written. Development proceeds subject to the D71 technical entry conditions being defined in the feature `plan.md` and approved with TL concurrence at Gate 1. Review record: `pr_reviews/BRD-20261001-190918.md`.

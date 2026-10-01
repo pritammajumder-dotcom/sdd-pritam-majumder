@@ -4,12 +4,13 @@
 |---|---|
 | Document | Employee Internal Transfer Digital Journey |
 | Version | **v1.2** |
-| Status | **Pending Gate 0** (second re-review) |
+| Status | **Approved (Gate 0, 2026-10-01)**. Development subject to the D71 entry conditions |
 | Date | 2026-09-29 |
 | Owner | Shamik Bhattacharya, Project Manager (Gate 0 Reviewer) |
 | Supersedes | v1.1, archived at `.ai-context/archive/brd/BRD-v1.1.md` (v1.0 at `.ai-context/archive/brd/BRD-v1.0.md`) |
 | Revision driver | Gate 0 re-review feedback on v1.1, 2026-09-29: 25 numbered items, a terminology item, and additional mandatory acceptance scenarios (`.ai-context/pr_reviews/BRD-20260929.md`) |
 | Change record | `.ai-context/decisions/brd-change-log.md` → Version 1.2 |
+| Gate 0 approval | Shamik Bhattacharya (PM, Gate 0 Reviewer), 2026-10-01. Record: `.ai-context/pr_reviews/BRD-20261001-190918.md` |
 
 ### Version History
 
@@ -17,7 +18,7 @@
 |---|---|---|---|---|
 | v1.0 | Not recorded (on or before 2026-09-25) | Initial baseline for BRD-001 | Not recorded | Changes Requested (2026-09-28, Shamik Bhattacharya) |
 | v1.1 | 2026-09-28 | Revised against Gate 0 feedback G0-01 to G0-28. Effective date became the point the transfer takes effect. Added withdrawal cutoff, HR action model, fulfilment failure and idempotency rules, access matrix, SLAs, transition table, audit, notifications, concurrency, performance, test data and acceptance scenarios. | Agent (on behalf of PM) | Changes Requested (2026-09-29, Shamik Bhattacharya) |
-| v1.2 | 2026-09-29 | Revised against Gate 0 re-review feedback G0R-01 to G0R-26. All v1.1 assumptions confirmed by the reviewer. Adds per-operation idempotency keys, an adapter cancel operation, the `CancellationPending` status and reversal resolution, late-callback and callback-authentication rules, manual-completion controls, approver-assignment rules, the new-manager rule, an effective-date cutoff with atomic application and job recovery, notification idempotency, a testable tamper-evidence rule, server-side protection of sensitive data, reschedule limits, a minimum adapter contract, status/flag separation, development entry conditions, and 22 more acceptance scenarios. | Agent (on behalf of PM) | Pending |
+| v1.2 | 2026-09-29 | Revised against Gate 0 re-review feedback G0R-01 to G0R-26. All v1.1 assumptions confirmed by the reviewer. Adds per-operation idempotency keys, an adapter cancel operation, the `CancellationPending` status and reversal resolution, late-callback and callback-authentication rules, manual-completion controls, approver-assignment rules, the new-manager rule, an effective-date cutoff with atomic application and job recovery, notification idempotency, a testable tamper-evidence rule, server-side protection of sensitive data, reschedule limits, a minimum adapter contract, status/flag separation, development entry conditions, and 22 more acceptance scenarios. | Agent (on behalf of PM) | Approved (2026-10-01, Shamik Bhattacharya), subject to D71 |
 
 ### How to read v1.2
 
