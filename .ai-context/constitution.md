@@ -14,14 +14,13 @@ Standard in force: **INT Engineering Guidelines — Specification-Driven Deliver
 
 | Role | Person | Email | Responsibility |
 |---|---|---|---|
-| Technical Lead / Architect | Subhajit Mukherjee | subhajit.mukherjee@intglobal.com | Owns this constitution; default Gate 2 code reviewer; technical concurrence at Gate 1 |
+| Technical Lead / Architect | Subhajit Mukherjee | subhajit.mukherjee@intglobal.com | Owns this constitution; default Gate 2 code reviewer |
 | Senior Software Engineer | Pritam Majumder | pritam.majumder@intglobal.com | Default Spec Author for feature and retro-specs |
 | Project Manager | Shamik Bhattacharya | shamik.bhattacharya@intglobal.com | Owns BRD entries and product-side sign-off; default Gate 0 and Gate 1 reviewer |
 
 ### Core Governance Rules:
 - **Author ≠ Reviewer**: Gate 1 reviewer is never the spec author (Default: SSE authors → PM reviews).
-- **Technical Concurrence**: Gate 1 requires recorded TL technical concurrence whenever a spec touches Security Posture or Architectural Constraints.
-- **Reviewer Split**: Gate 1 = Intent / Scope / BRD-traceability review (PM); Gate 2 = Technical evidence & code review (TL).
+- **Gate 1 Review**: Gate 1 = Intent / Scope / BRD-traceability review (PM); Gate 2 = Technical evidence & code review (TL).
 - **Gate 1 SLA**: Same working day for specs with ≤ 5 ACs; 48 hours maximum.
 
 ### INT Amendments to SDD v1.0:
