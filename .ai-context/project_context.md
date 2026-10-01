@@ -13,7 +13,7 @@ The system follows a **Modular Monolith (Microservice Ready)** architecture.
 
 ## Stakeholders & Governance
 - **Sponsor**: HR Business Owner
-- **Project Manager (Gate 1 Reviewer)**: Shamik Bhattacharya (shamik.bhattacharya@intglobal.com)
+- **Project Manager (Gate 0 and Gate 1 Reviewer)**: Shamik Bhattacharya (shamik.bhattacharya@intglobal.com)
 - **Technical Lead / Architect (Gate 2 Reviewer)**: Subhajit Mukherjee (subhajit.mukherjee@intglobal.com)
 - **Senior Software Engineer (Spec Author)**: Pritam Majumder (pritam.majumder@intglobal.com)
 

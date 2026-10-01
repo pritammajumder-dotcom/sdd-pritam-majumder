@@ -4,9 +4,9 @@ Traceability and history only. The authoritative requirement baseline is always 
 
 | Version | Date | Status | Summary | Location |
 |---|---|---|---|---|
-| 1.0 | Not recorded (on or before 2026-09-25) | Superseded (Gate 1: Changes Requested, 2026-09-28) | Initial BRD-001 baseline | `archive/brd/BRD-v1.0.md` |
-| 1.1 | 2026-09-28 | Superseded (Gate 1: Changes Requested, 2026-09-29) | Revision against Gate 1 feedback G1-01 to G1-28 | `archive/brd/BRD-v1.1.md` |
-| 1.2 | 2026-09-29 | Pending Gate 1 | Revision against Gate 1 re-review feedback G1R-01 to G1R-26 | `BRD.md` |
+| 1.0 | Not recorded (on or before 2026-09-25) | Superseded (Gate 0: Changes Requested, 2026-09-28) | Initial BRD-001 baseline | `archive/brd/BRD-v1.0.md` |
+| 1.1 | 2026-09-28 | Superseded (Gate 0: Changes Requested, 2026-09-29) | Revision against Gate 0 feedback G0-01 to G0-28 | `archive/brd/BRD-v1.1.md` |
+| 1.2 | 2026-09-29 | Pending Gate 0 | Revision against Gate 0 re-review feedback G0R-01 to G0R-26 | `BRD.md` |
 
 ---
 
@@ -20,8 +20,8 @@ Initial Employee Internal Transfer Digital Journey requirements (BRD-001). This 
 Changes:
 - Initial BRD
 
-Gate 1:
-Changes Requested. Shamik Bhattacharya, 2026-09-28. See `decisions/gate-1-feedback-brd-v1.0.md`.
+Gate 0:
+Changes Requested. Shamik Bhattacharya, 2026-09-28. See `pr_reviews/BRD-20260928.md`.
 
 ---
 
@@ -33,7 +33,7 @@ Change Date:
 2026-09-28
 
 Change Summary:
-Revision of BRD-001 in response to Gate 1 feedback (28 items and mandatory acceptance scenarios) from Shamik Bhattacharya (PM, Gate 1 Reviewer). There is no new client source document in `docs/`. The Gate 1 review record (`decisions/gate-1-feedback-brd-v1.0.md`) drives this revision. BRD-001 decisions now have clause-level IDs (`BRD-001.D01` to `D52`) and acceptance scenarios (`AS-P01` to `P10`, `AS-N01` to `N22`) for traceability. Clauses marked **(Assumption)** need reviewer confirmation.
+Revision of BRD-001 in response to Gate 0 feedback (28 items and mandatory acceptance scenarios) from Shamik Bhattacharya (PM, Gate 0 Reviewer). There is no new client source document in `docs/`. The Gate 0 review record (`pr_reviews/BRD-20260928.md`) drives this revision. BRD-001 decisions now have clause-level IDs (`BRD-001.D01` to `D52`) and acceptance scenarios (`AS-P01` to `P10`, `AS-N01` to `N22`) for traceability. Clauses marked **(Assumption)** need reviewer confirmation.
 
 Headline change:
 The effective date, not HR approval, is now the point the transfer takes effect. Organisational data changes only on the effective date, and only after all three fulfilment items are complete (D16).
@@ -109,12 +109,12 @@ Backend Impact:
 - Inactive-user handling; audit service; notification persistence.
 
 Test Impact:
-- The existing `test_cases/internal-transfer-journey.test_cases.md` was written against v1.0 and must be revised.
+- Test case generation will occur during the TDD phase, following Gate 1 Spec approval.
 - Add AS-P01 to P10 and AS-N01 to N22; business-day examples E1 to E7; adapter outcome matrix; concurrency and duplicate tests; access-matrix tests; performance tests against D51.
 
 Existing Implementation Impact:
 - None. No application implementation exists for this BRD yet.
-- The spec `specs/internal-transfer-journey.spec.md` (In Peer Review) was written against v1.0 and is now **stale**. It must be revised to v1.1 before Gate 1 re-review.
+- Spec generation is deferred until v1.1 receives Gate 0 approval.
 
 Architecture Impact:
 - Needs a scheduler/job capability (effective date, SLAs) and a retry mechanism for adapter calls. Check whether these fit the approved stack (NestJS, PostgreSQL, Redis) or need an ADR.
@@ -122,7 +122,7 @@ Architecture Impact:
 - The audit trail falls under the Critical coverage tier (`audit`).
 - TL (Subhajit Mukherjee) technical concurrence is needed at Gate 1, because the security posture (access matrix) and architectural constraints (jobs, retries) are affected.
 
-Gate 1 Status:
+Gate 0 Status:
 Changes Requested
 
 Approval Date:
@@ -132,19 +132,19 @@ Approved By:
 Not approved
 
 Approval Notes:
-Shamik Bhattacharya (Gate 1 Reviewer), 2026-09-29: Changes Requested, "almost development-ready". The feedback had 20 numbered P0/P1 items, 4 development-readiness items, 1 terminology item, and additional acceptance scenarios (`decisions/gate-1-feedback-brd-v1.1.md`). The reviewer confirmed the listed assumptions as written during the v1.2 revision. All items are addressed in v1.2.
+Shamik Bhattacharya (Gate 0 Reviewer), 2026-09-29: Changes Requested, "almost development-ready". The feedback had 20 numbered P0/P1 items, 4 development-readiness items, 1 terminology item, and additional acceptance scenarios (`pr_reviews/BRD-20260929.md`). The reviewer confirmed the listed assumptions as written during the v1.2 revision. All items are addressed in v1.2.
 
 ---
 
 ### Version 1.2
 
-Status: Pending Gate 1
+Status: Pending Gate 0
 
 Change Date:
 2026-09-29
 
 Change Summary:
-Revision of BRD-001 in response to the Gate 1 re-review of v1.1 by Shamik Bhattacharya (PM, Gate 1 Reviewer). The feedback is recorded as G1R-01 to G1R-26 in `decisions/gate-1-feedback-brd-v1.1.md`. There is no new client source document in `docs/`, so the review record drives this revision. Clause IDs D01 to D52 keep their meaning, and D53 to D71 are new. All v1.1 **(Assumption)** clauses were confirmed as written by the reviewer on 2026-09-29, and v1.2 has no open assumptions. The reviewer also made three decisions during the revision: cancellation becomes terminal only after unwind (`CancellationPending`); a new submission is allowed while an earlier cancellation unwinds, but HR approval is blocked; and the new manager comes from master data, with HR selecting one where there is a gap. v1.1 is archived unchanged at `archive/brd/BRD-v1.1.md`.
+Revision of BRD-001 in response to the Gate 0 re-review of v1.1 by Shamik Bhattacharya (PM, Gate 0 Reviewer). The feedback is recorded as G0R-01 to G0R-26 in `pr_reviews/BRD-20260929.md`. There is no new client source document in `docs/`, so the review record drives this revision. Clause IDs D01 to D52 keep their meaning, and D53 to D71 are new. All v1.1 **(Assumption)** clauses were confirmed as written by the reviewer on 2026-09-29, and v1.2 has no open assumptions. The reviewer also made three decisions during the revision: cancellation becomes terminal only after unwind (`CancellationPending`); a new submission is allowed while an earlier cancellation unwinds, but HR approval is blocked; and the new manager comes from master data, with HR selecting one where there is a gap. v1.1 is archived unchanged at `archive/brd/BRD-v1.1.md`.
 
 Headline changes:
 - HR or System cancellation after HR approval is no longer immediately terminal. The new non-terminal status `CancellationPending` lasts until every item is `Cancelled`, `Reversed` or `ReversalWaived` (D10, D55).
@@ -244,20 +244,20 @@ Backend Impact:
 - Notification de-duplication. Audit hash chain and verification job. Role-based response filtering.
 
 Test Impact:
-- `test_cases/internal-transfer-journey.test_cases.md` does not reflect v1.2 and must be revised.
+- Test case generation is deferred until the TDD phase, following Gate 1 Spec approval.
 - Add AS-P23 to AS-P33 and AS-N23 to AS-N38.
 - Add adapter operation, cancel and callback matrices, the cutoff race tests, tamper detection, per-role API field-absence tests, E8, TE-13 and TE-14.
 
 Existing Implementation Impact:
 - None. No application implementation exists for this BRD yet.
-- The spec `specs/internal-transfer-journey.spec.md` does not reflect v1.2 and must be revised before development (D71). It was not changed in this revision, per the reviewer's instruction to revise the BRD only.
+- Spec generation is deferred until v1.2 receives Gate 0 approval.
 
 Architecture Impact:
 - Scheduler with recovery and per-request serialisation. Authenticated inbound callback interface. Hash-chained audit with DB-level grants. All must fit the approved stack (NestJS, PostgreSQL + Prisma, Redis) or need an ADR.
 - D71 makes the plan items (DB uniqueness mechanism, adapter contract, callback auth, audit chain, scheduler, timezone, field filtering) entry conditions for development.
 - TL (Subhajit Mukherjee) technical concurrence is needed at Gate 1.
 
-Gate 1 Status:
+Gate 0 Status:
 Pending
 
 Approval Date:

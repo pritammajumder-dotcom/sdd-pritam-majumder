@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>INT SDD Gate Review Dashboard</title>
+    <style>
+        body { font-family: sans-serif; margin: 20px; line-height: 1.6; }
+        .gate { border: 1px solid #ccc; padding: 15px; margin-bottom: 20px; border-radius: 5px; }
+        .status-pending { color: #856404; background-color: #fff3cd; padding: 5px; border-radius: 3px; font-weight: bold; }
+        .status-approved { color: #155724; background-color: #d4edda; padding: 5px; border-radius: 3px; font-weight: bold; }
+        .status-blocked { color: #721c24; background-color: #f8d7da; padding: 5px; border-radius: 3px; font-weight: bold; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+    <h1>INT SDD Gate Review Dashboard</h1>
+    <p><strong>Project:</strong> Employee Internal Transfer Digital Journey</p>
+    <p><strong>Current SDD State:</strong> <span class="status-pending">Waiting at Gate 0</span></p>
+
+    <div class="gate">
+        <h2>Gate 0: Business Requirements (BRD)</h2>
+        <p><strong>Artifact:</strong> <a href="./BRD.md">BRD v1.2</a></p>
+        <p><strong>Reviewer:</strong> Shamik Bhattacharya (PM)</p>
+        <p><strong>Status:</strong> <span class="status-pending">Pending Approval</span></p>
+        <p><em>Notes:</em> All open assumptions have been confirmed. Ready for final PM sign-off.</p>
+    </div>
+
+    <div class="gate">
+        <h2>Gate 1: Feature Specification</h2>
+        <p><strong>Artifact:</strong> (Not Generated)</p>
+        <p><strong>Reviewer:</strong> Shamik Bhattacharya (PM) & Subhajit Mukherjee (TL Concurrence)</p>
+        <p><strong>Status:</strong> <span class="status-blocked">Blocked</span></p>
+        <p><em>Notes:</em> Spec generation is blocked by the SDD Blueprint until Gate 0 is approved.</p>
+    </div>
+
+    <div class="gate">
+        <h2>Gate 2: Code Implementation</h2>
+        <p><strong>Artifact:</strong> (Not Started)</p>
+        <p><strong>Reviewer:</strong> Subhajit Mukherjee (TL)</p>
+        <p><strong>Status:</strong> <span class="status-blocked">Blocked</span></p>
+        <p><em>Notes:</em> Development is blocked until Gate 1 is approved.</p>
+    </div>
+</body>
+</html>
