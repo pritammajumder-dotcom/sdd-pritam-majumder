@@ -16,3 +16,7 @@ Project setup initiated with Mobile/Backend architecture.
 ### [2026-10-01 19:09]
 **User Request:** Shamik Bhattacharya (Gate 0 Reviewer) approved BRD v1.2 as functionally development-ready, with no remaining business-requirement blocker, subject to the D71 technical entry conditions in the feature plan.md.
 **Agent Action:** Recorded Gate 0 approval in `.ai-context/pr_reviews/BRD-20261001-190918.md` with the D71 conditions of approval. Set BRD v1.2 status to Approved and updated both change logs, `assumptions.md`, `dashboard.html` and `status.md`. No spec, plan or code files were changed.
+
+### [2026-10-05 14:46]
+**User Request:** Proceed with generating the Feature Specification based on the approved BRD v1.2.
+**Agent Action:** Generated the Feature Specification (.ai-context/specs/internal-transfer-journey.spec.md) based directly on BRD v1.2 constraints. Set status to "In Peer Review". Updated the project dashboard and status board to reflect that the project is now officially Waiting at Gate 1 for PM Spec Approval.

@@ -590,7 +590,7 @@ Actors: **Employee**, **Manager** (the employee's current direct reporting manag
   | **Flags** (zero or more, each set and cleared independently) | *Delayed* (stage or item), *AwaitingApproverAssignment*, *EffectiveDateMissed*, *EligibilityChangedAfterApproval*, *CurrentAssignmentChanged*, *ProposedPositionInvalid*, *BlockedByPriorCancellation*, *NewManagerRequired*, *ApplicationOverdue* (request level); *Delayed*, *AdapterDiscrepancy* (item level) | Request or item |
 
   Attributes such as cancellation source, completion source and reason category are attributes, not statuses or flags. Where the same word appears at two levels (`Cancelled`, `Completed`), the level is always stated.
-- **BRD-001.D71 (Development entry conditions)** `[G0R-22, G0R-25]`. The following are Technical decisions, but development of the affected area must not start until each is defined in the feature `plan.md` and approved with TL concurrence at Gate 1:
+- **BRD-001.D71 (Development entry conditions)** `[G0R-22, G0R-25]`. The following are Technical decisions, but development of the affected area must not start until each is defined in the feature `plan.md` and approved at Gate 1:
   1. The database mechanism for the single-active-request rule (D07), for example a partial unique index over the active set. A plain unique constraint on employee and status is not acceptable.
   2. The adapter contract (D69) with the idempotency model (D53), cancel and reverse handling (D54, D55) and callback handling (D56).
   3. The callback authentication scheme (D57).

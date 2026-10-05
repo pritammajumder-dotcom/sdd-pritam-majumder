@@ -120,7 +120,7 @@ Architecture Impact:
 - Needs a scheduler/job capability (effective date, SLAs) and a retry mechanism for adapter calls. Check whether these fit the approved stack (NestJS, PostgreSQL, Redis) or need an ADR.
 - Idempotency and optimistic concurrency match the existing constitution rule (`Idempotency-Key` on state-changing mutations).
 - The audit trail falls under the Critical coverage tier (`audit`).
-- TL (Subhajit Mukherjee) technical concurrence is needed at Gate 1, because the security posture (access matrix) and architectural constraints (jobs, retries) are affected.
+- Security posture (access matrix) and architectural constraints (jobs, retries) are affected.
 
 Gate 0 Status:
 Changes Requested
@@ -255,7 +255,6 @@ Existing Implementation Impact:
 Architecture Impact:
 - Scheduler with recovery and per-request serialisation. Authenticated inbound callback interface. Hash-chained audit with DB-level grants. All must fit the approved stack (NestJS, PostgreSQL + Prisma, Redis) or need an ADR.
 - D71 makes the plan items (DB uniqueness mechanism, adapter contract, callback auth, audit chain, scheduler, timezone, field filtering) entry conditions for development.
-- TL (Subhajit Mukherjee) technical concurrence is needed at Gate 1.
 
 Gate 0 Status:
 Approved
@@ -267,4 +266,4 @@ Approved By:
 Shamik Bhattacharya (PM, Gate 0 Reviewer), shamik.bhattacharya@intglobal.com
 
 Approval Notes:
-BRD v1.2 is functionally development-ready, with no remaining business-requirement blocker. The new v1.2 values in the Decision Register are approved as written. Development proceeds subject to the D71 technical entry conditions being defined in the feature `plan.md` and approved with TL concurrence at Gate 1. Review record: `pr_reviews/BRD-20261001-190918.md`.
+BRD v1.2 is functionally development-ready, with no remaining business-requirement blocker. The new v1.2 values in the Decision Register are approved as written. Development proceeds subject to the D71 technical entry conditions being defined in the feature `plan.md` and approved at Gate 1. Review record: `pr_reviews/BRD-20261001-190918.md`.
