@@ -20,3 +20,15 @@ Project setup initiated with Mobile/Backend architecture.
 ### [2026-10-05 14:46]
 **User Request:** Proceed with generating the Feature Specification based on the approved BRD v1.2.
 **Agent Action:** Generated the Feature Specification (.ai-context/specs/internal-transfer-journey.spec.md) based directly on BRD v1.2 constraints. Set status to "In Peer Review". Updated the project dashboard and status board to reflect that the project is now officially Waiting at Gate 1 for PM Spec Approval.
+
+### [2026-10-09 16:43]
+**User Request:** Shamik Bhattacharya (Gate 1 Reviewer) ran `/int-pr-gate-workflow`, did not approve the internal-transfer-journey spec, gave feedback items 4 to 6 (API01 idempotency, queue and master-data APIs, active set vs `CancellationPending`) with a request for positive and negative tests, and asked for the spec to be updated with a version history. Items 1 to 3 to follow.
+**Agent Action:** Verified the reviewer's git email against the `project_context.md` roster. Recorded Gate 1 Changes Requested in `.ai-context/pr_reviews/internal-transfer-journey-G1-20261009-164323.md` (G1-04 to G1-06; G1-01 to G1-03 pending). Archived spec v1.0 unchanged at `.ai-context/archive/specs/internal-transfer-journey.spec-v1.0.md`. Revised the spec to v1.1: version history, Gate 1 history row, API01 idempotency contract, API02 scoping and paging, new API18 to API24, active-set partial index and employee-lock protocol for D68, AC-P22 to P29, AC-N39 to N54, UT rows, IT-01 to IT-08. Updated `dashboard.html` and `status.md`. No code changed.
+
+### [2026-10-09 17:00]
+**User Request:** The reviewer re-sent Gate 1 feedback items 4 to 6 and asked for the spec to be updated accordingly.
+**Agent Action:** Confirmed spec v1.1 already covers G1-04 to G1-06. Closed the remaining G1-06 point by creating `.ai-context/plans/internal-transfer-journey.plan.md` (draft) with the exact active set, partial unique index DDL, employee-lock protocol, error mapping and `SubmissionIdempotency` DDL. D71 items 2 to 7 are marked pending. Linked the plan from the spec and the review record. Items G1-01 to G1-03 are still not received.
+
+### [2026-10-09 17:10]
+**User Request:** The reviewer confirmed that "Gate 1 not approved" applies to v1.0, and that the spec can be approved once the given feedback is addressed.
+**Agent Action:** Recorded G1-04 to G1-06 as the complete feedback (no items 1 to 3). Resubmitted spec v1.1 for Gate 1 re-review: set the spec status to In Peer Review (Gate 1 re-review) and updated the review record, `dashboard.html` and `status.md`. No approval recorded yet.
