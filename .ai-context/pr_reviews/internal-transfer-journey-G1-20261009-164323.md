@@ -39,3 +39,4 @@
 ## Re-submission
 - Spec v1.1 addresses G1-04 to G1-06 and was resubmitted for Gate 1 re-review on 2026-10-09. Status: In Peer Review (Gate 1 re-review).
 - The re-review outcome will be recorded in a new review file.
+- Re-review outcome: **Approved** on 2026-10-13. Record: `.ai-context/pr_reviews/internal-transfer-journey-G1-20261013-172245.md`.

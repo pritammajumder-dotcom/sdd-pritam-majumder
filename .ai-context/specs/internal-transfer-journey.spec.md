@@ -4,13 +4,13 @@
 internal-transfer-journey
 
 ## Status
-In Peer Review (Gate 1 re-review of v1.1). v1.0 was not approved on 2026-10-09; v1.1 addresses all Gate 1 feedback (G1-04 to G1-06) and was resubmitted on 2026-10-09.
+Approved (Gate 1, v1.1, 2026-10-13). v1.0 was not approved on 2026-10-09; v1.1 resolves G1-04 to G1-06. Development is subject to BRD-001.D71: D71 item 1 is approved; items 2 to 7 are not yet defined in `plan.md`, and those areas stay blocked until each is approved at Gate 1.
 
 ## Spec Version History
 | Version | Date | Change | Author | Gate 1 Outcome |
 |---|---|---|---|---|
 | v1.0 | 2026-10-05 | Initial spec generated from BRD v1.2. Archived unchanged at `.ai-context/archive/specs/internal-transfer-journey.spec-v1.0.md` | Agent (on behalf of Pritam Majumder) | Changes Requested (2026-10-09, Shamik Bhattacharya). Record: `.ai-context/pr_reviews/internal-transfer-journey-G1-20261009-164323.md` |
-| v1.1 | 2026-10-09 | **G1-04:** API01 idempotency contract (`Idempotency-Key` header, scope, retention, payload fingerprint, concurrency, replay, conflicting payload). **G1-05:** new APIs API18 to API24 for master-data combinations, the Manager, HR and fulfilment queues, and approver/manager candidates; API02 scoped and paginated; common queue rules. **G1-06:** exact active set, partial unique index, and the D68 employee-lock protocol for `CancellationPending`. New AC-P22 to AC-P29, AC-N39 to AC-N54, matching UT rows, and integration tests IT-01 to IT-08 (real PostgreSQL) for the concurrency cases | Agent (on behalf of Pritam Majumder) | Pending |
+| v1.1 | 2026-10-09 | **G1-04:** API01 idempotency contract (`Idempotency-Key` header, scope, retention, payload fingerprint, concurrency, replay, conflicting payload). **G1-05:** new APIs API18 to API24 for master-data combinations, the Manager, HR and fulfilment queues, and approver/manager candidates; API02 scoped and paginated; common queue rules. **G1-06:** exact active set, partial unique index, and the D68 employee-lock protocol for `CancellationPending`. New AC-P22 to AC-P29, AC-N39 to AC-N54, matching UT rows, and integration tests IT-01 to IT-08 (real PostgreSQL) for the concurrency cases | Agent (on behalf of Pritam Majumder) | Approved (2026-10-13, Shamik Bhattacharya). Record: `.ai-context/pr_reviews/internal-transfer-journey-G1-20261013-172245.md` |
 
 ## Roles & Assignments
 - **Developer:** Pritam Majumder (pritam.majumder@intglobal.com)
@@ -24,7 +24,7 @@ In Peer Review (Gate 1 re-review of v1.1). v1.0 was not approved on 2026-10-09; 
 | Gate | Approver Name | Approver Email/ID | Date/Time | Outcome | Approval Comment / Summary |
 |---|---|---|---|---|---|
 | Gate 1 (Spec Review), v1.0 | Shamik Bhattacharya | shamik.bhattacharya@intglobal.com | 2026-10-09 16:43:23 | Changes Requested | API01 idempotency contract incomplete (G1-04); queue and master-data APIs not defined (G1-05); active set vs `CancellationPending` undefined (G1-06). Add positive and negative tests for each |
-| Gate 1 (Spec Review), v1.1 | Pending | Pending | Pending | Pending | Pending |
+| Gate 1 (Spec Review), v1.1 | Shamik Bhattacharya | shamik.bhattacharya@intglobal.com | 2026-10-13 17:22:45 | Approved | G1-04 to G1-06 resolved (batch sign-off). D71 item 1 approved; D71 items 2 to 7 not yet defined, so those areas stay blocked |
 | Gate 2 (Code Review) | Pending | Pending | Pending | Pending | Pending |
 
 ## Intent

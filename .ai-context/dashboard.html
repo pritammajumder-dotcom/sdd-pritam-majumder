@@ -16,7 +16,7 @@
 <body>
     <h1>INT SDD Gate Review Dashboard</h1>
     <p><strong>Project:</strong> Employee Internal Transfer Digital Journey</p>
-    <p><strong>Current SDD State:</strong> <span class="status-pending">Gate 1 Re-review Pending. Spec v1.1 in Peer Review</span></p>
+    <p><strong>Current SDD State:</strong> <span class="status-approved">Gate 1 Approved (spec v1.1). Development open for D71 item 1 scope</span></p>
 
     <div class="gate">
         <h2>Gate 0: Business Requirements (BRD)</h2>
@@ -31,17 +31,17 @@
         <h2>Gate 1: Feature Specification</h2>
         <p><strong>Artifact:</strong> <a href="./specs/internal-transfer-journey.spec.md">internal-transfer-journey.spec.md</a></p>
         <p><strong>Reviewer:</strong> Shamik Bhattacharya (PM)</p>
-        <p><strong>Status:</strong> <span class="status-pending">v1.1 In Peer Review (re-review)</span>. v1.0: Changes Requested (2026-10-09)</p>
-        <p><strong>Review Record:</strong> <a href="./pr_reviews/internal-transfer-journey-G1-20261009-164323.md">internal-transfer-journey-G1-20261009-164323.md</a></p>
-        <p><em>Notes:</em> v1.0 not approved: API01 idempotency (G1-04), queue and master-data APIs (G1-05), active set vs CancellationPending (G1-06). Spec revised to v1.1 (v1.0 archived), with the constraint strategy in plans/internal-transfer-journey.plan.md (draft). Resubmitted for Gate 1 re-review on 2026-10-09. The spec and plan.md must still cover all seven D71 entry conditions.</p>
+        <p><strong>Status:</strong> <span class="status-approved">v1.1 Approved (2026-10-13)</span>. v1.0: Changes Requested (2026-10-09)</p>
+        <p><strong>Review Record:</strong> <a href="./pr_reviews/internal-transfer-journey-G1-20261013-172245.md">internal-transfer-journey-G1-20261013-172245.md</a> (v1.1, Approved); <a href="./pr_reviews/internal-transfer-journey-G1-20261009-164323.md">internal-transfer-journey-G1-20261009-164323.md</a> (v1.0, Changes Requested)</p>
+        <p><em>Notes:</em> v1.0 not approved: API01 idempotency (G1-04), queue and master-data APIs (G1-05), active set vs CancellationPending (G1-06). Spec revised to v1.1 (v1.0 archived), with the constraint strategy in plans/internal-transfer-journey.plan.md (draft). v1.1 approved on 2026-10-13: G1-04 to G1-06 resolved. D71 item 1 (active-request constraint and idempotency store) approved. D71 items 2 to 7 are not yet defined in plan.md; those areas stay blocked until each is approved at Gate 1.</p>
     </div>
 
     <div class="gate">
         <h2>Gate 2: Code Implementation</h2>
         <p><strong>Artifact:</strong> (Not Started)</p>
         <p><strong>Reviewer:</strong> Subhajit Mukherjee (TL)</p>
-        <p><strong>Status:</strong> <span class="status-blocked">Blocked</span></p>
-        <p><em>Notes:</em> Development is blocked until Gate 1 is approved.</p>
+        <p><strong>Status:</strong> <span class="status-pending">Development Unblocked (partial)</span></p>
+        <p><em>Notes:</em> Development may start on the D71 item 1 scope (migration, IT-01 to IT-08 test-first, API01 submission and the API06 approval check). Areas under D71 items 2 to 7 remain blocked.</p>
     </div>
 </body>
 </html>

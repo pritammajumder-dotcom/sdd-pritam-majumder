@@ -1,6 +1,6 @@
 # Plan: Employee Internal Transfer Digital Journey
 
-> **Status: Draft (partial).** Created 2026-10-09 to answer Gate 1 feedback G1-06 ("document the exact constraint/index strategy in plan.md"). Only D71 item 1 and the submission idempotency store (G1-04) are defined here. The other D71 entry conditions (items 2 to 7) are still to be written by the spec author and approved at Gate 1 before development of those areas starts.
+> **Status: Draft (partial).** Created 2026-10-09 to answer Gate 1 feedback G1-06 ("document the exact constraint/index strategy in plan.md"). Only D71 item 1 and the submission idempotency store (G1-04) are defined here. **These were approved at Gate 1 on 2026-10-13** (`pr_reviews/internal-transfer-journey-G1-20261013-172245.md`). The other D71 entry conditions (items 2 to 7) are still to be written by the spec author and approved at Gate 1 before development of those areas starts.
 
 ## Derived From
 .ai-context/specs/internal-transfer-journey.spec.md (v1.1)
@@ -71,7 +71,7 @@ Adapter contract and idempotency (D69, D53 to D56), callback authentication (D57
 - [ ] Security posture matches constitution.md. Pending (D57, D64, D65)
 
 ## Explicitly Deferred
-- D71 items 2 to 7, to be written by the spec author before Gate 1 re-review.
+- D71 items 2 to 7, to be written by the spec author and approved at Gate 1 before development of each area starts.
 
 ## Sequencing
 1. Migration: `TransferRequest` status enum, partial unique index, `SubmissionIdempotency`.

@@ -32,3 +32,7 @@ Project setup initiated with Mobile/Backend architecture.
 ### [2026-10-09 17:10]
 **User Request:** The reviewer confirmed that "Gate 1 not approved" applies to v1.0, and that the spec can be approved once the given feedback is addressed.
 **Agent Action:** Recorded G1-04 to G1-06 as the complete feedback (no items 1 to 3). Resubmitted spec v1.1 for Gate 1 re-review: set the spec status to In Peer Review (Gate 1 re-review) and updated the review record, `dashboard.html` and `status.md`. No approval recorded yet.
+
+### [2026-10-13 17:22]
+**User Request:** Shamik Bhattacharya (Gate 1 Reviewer) ran `/int-pr-gate-workflow` and chose the bulk action "Approve All Pending Items".
+**Agent Action:** Verified the reviewer's git email against the `project_context.md` roster. The only pending item was the Gate 1 re-review of internal-transfer-journey spec v1.1. Recorded Gate 1 Approved in `.ai-context/pr_reviews/internal-transfer-journey-G1-20261013-172245.md` (G1-04 to G1-06 resolved; D71 item 1 approved; D71 items 2 to 7 not yet defined, so those areas stay blocked). Updated the spec status, version history and gate table; `plans/internal-transfer-journey.plan.md`; `dashboard.html`; and `status.md`. No code changed.
