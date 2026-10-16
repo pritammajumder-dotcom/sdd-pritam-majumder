@@ -1,0 +1,24 @@
+{
+  "name": "sdd-pritam-majumder",
+  "version": "1.0.0",
+  "description": "Employee Internal Transfer Digital Journey",
+  "scripts": {
+    "test": "jest",
+    "typecheck": "tsc --noEmit",
+    "lint": "echo \"No linter configured yet\""
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.14",
+    "@types/node": "^22.10.0",
+    "@types/uuid": "^10.0.0",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.2.5",
+    "typescript": "^5.6.3"
+  },
+  "dependencies": {
+    "@types/pg": "^8.23.1",
+    "dotenv": "^16.4.5",
+    "pg": "^8.23.1",
+    "uuid": "^10.0.0"
+  }
+}

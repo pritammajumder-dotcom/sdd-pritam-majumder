@@ -1,0 +1,86 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum RequestStatus {
+  Submitted
+  PendingManagerApproval
+  PendingHRValidation
+  PendingFulfilment
+  FulfilmentFailed
+  Scheduled
+  CancellationPending
+  Completed
+  RejectedByManager
+  RejectedByHR
+  Withdrawn
+  Cancelled
+}
+
+model Employee {
+  id                    String                  @id @default(uuid()) @db.Uuid
+  name                  String
+  email                 String                  @unique
+  currentDepartmentId   String
+  currentLocationId     String
+  currentRoleId         String
+  managerId             String?                 @db.Uuid
+  isActive              Boolean                 @default(true)
+  createdAt             DateTime                @default(now()) @db.Timestamptz
+  updatedAt             DateTime                @updatedAt @db.Timestamptz
+
+  manager               Employee?               @relation("EmployeeHierarchy", fields: [managerId], references: [id])
+  directReports         Employee[]              @relation("EmployeeHierarchy")
+  transferRequests      TransferRequest[]       @relation("EmployeeTransfers")
+  submissionIdempotency SubmissionIdempotency[]
+
+  @@map("Employee")
+}
+
+model TransferRequest {
+  id                         String                  @id @default(uuid()) @db.Uuid
+  employeeId                 String                  @db.Uuid
+  status                     RequestStatus           @default(Submitted)
+  blockedByPriorCancellation Boolean                 @default(false)
+  version                    Int                     @default(1)
+  proposedDepartmentId       String
+  proposedLocationId         String
+  proposedRoleId             String
+  proposedEffectiveDate      DateTime                @db.Date
+  reason                     String?
+  currentManagerId           String?                 @db.Uuid
+  assignedApproverId         String?                 @db.Uuid
+  createdAt                  DateTime                @default(now()) @db.Timestamptz
+  updatedAt                  DateTime                @updatedAt @db.Timestamptz
+
+  employee                   Employee                @relation("EmployeeTransfers", fields: [employeeId], references: [id])
+  submissionIdempotencies    SubmissionIdempotency[]
+
+  @@index([employeeId], map: "ix_transfer_request_employee")
+  @@index([status], map: "ix_transfer_request_status")
+  @@map("TransferRequest")
+}
+
+model SubmissionIdempotency {
+  employeeId        String          @db.Uuid
+  operation         String
+  idempotencyKey    String          @db.Uuid
+  payloadHash       String          @db.Char(64)
+  transferRequestId String          @db.Uuid
+  responseStatus    Int             @db.SmallInt
+  responseBody      Json
+  createdAt         DateTime        @default(now()) @db.Timestamptz
+  expiresAt         DateTime        @db.Timestamptz
+
+  employee          Employee        @relation(fields: [employeeId], references: [id])
+  transferRequest   TransferRequest @relation(fields: [transferRequestId], references: [id])
+
+  @@id([employeeId, operation, idempotencyKey])
+  @@index([expiresAt], map: "ix_submission_idempotency_expires")
+  @@map("SubmissionIdempotency")
+}
